@@ -1,2 +1,6 @@
+print("test 1");
+print("test 2");
 
-print ("io amo le persone nere. sono proprio belle da vedere. dico sul serio!");
+rtrn 0;
+
+print("shouldnt be seen");

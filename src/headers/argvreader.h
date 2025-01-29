@@ -3,7 +3,9 @@
 #include <string.h>
 
 
-void compiler(char filecontent[]) {
+// TODO: try sscanf()
+
+int compiler(char filecontent[]) {
 	int x = 0;
 	while (filecontent[x] != '\0') {
 		if (filecontent[x] == 'p' && filecontent[x + 1] == 'r' && filecontent[x + 2] == 'i' && filecontent[x + 3] == 'n' && filecontent[x + 4] == 't') {
@@ -28,6 +30,20 @@ void compiler(char filecontent[]) {
 				printf("%c",filecontent[x]);
 				x++;
 			}
+			printf("\n");
+		}
+		else if (filecontent[x] == 'r' && filecontent[x + 1] == 't' && filecontent[x + 2] == 'r' && filecontent[x + 3] == 'n') {
+			x += 4;
+			while (filecontent[x] == ' ') {
+				x++;
+				if (filecontent[x] != ' ') {
+					break;
+				}
+			}
+			int rtrn;
+			sscanf(&filecontent[x], "%d", &rtrn);
+			printf("\nreturning this value: %d \n",rtrn);
+			return rtrn;
 		}
 		else {
 			x++;
