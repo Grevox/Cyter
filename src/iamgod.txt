@@ -1,0 +1,2 @@
+
+print ("io amo le persone nere. sono proprio belle da vedere. dico sul serio!");
