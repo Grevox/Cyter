@@ -98,4 +98,7 @@ void options(int arguments, char* argv[]) {
 		// this will start the file reader
 		filereader(argv[2]);
 	}
+	else if (strcmp(argv[1], "-debug") == 0) {
+// remember to first check how many ints there are here, then make an int array with the number of ints
+	}
 }
