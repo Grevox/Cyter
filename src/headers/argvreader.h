@@ -4,13 +4,65 @@
 
 
 // TODO: try sscanf()
+int ints(char *str,char *substr) {
+	int count = 0;
+	while ((str = strstr(str, substr)) != NULL) {
+		count++;
+		str += strlen(substr);
+	}
+	return count;
+}
 
 int compiler(char filecontent[]) {
 	int x = 0;
+	int temp = ints(filecontent, "int ");
+	int integers[temp]; // parsed value
+	char *intname[temp]; // name
+	char *intnotparsed[temp]; // not parsed value
+	int manyints = 0; // Index
+	int tempo = 0;
 	while (filecontent[x] != '\0') {
-		if (filecontent[x] == 'p' && filecontent[x + 1] == 'r' && filecontent[x + 2] == 'i' && filecontent[x + 3] == 'n' && filecontent[x + 4] == 't') {
+		if (filecontent[x] == 'i' && filecontent[x+1] == 'n' && filecontent[x+2] == 't' && filecontent[x+3] == ' ') {
+			x += 3;
+			printf("\nINT FOUND\n");
+			while (filecontent[x] == ' ') {
+				x++;
+				if (filecontent[x] != ' ') {
+					break;
+				}
+			}
+			while (filecontent[x] != ' ') {
+				intname[manyints][tempo] = filecontent[x];
+				if (filecontent[x] == ' ') {
+					break;
+				}
+				tempo++;
+				x++;
+			}
+			while (filecontent[x] == ' ') {
+				x++;
+				if (filecontent[x] != ' ') {
+					break;
+				}
+			}
+			tempo = 0;
+			while (filecontent[x] != ' ') {
+				intnotparsed[manyints][tempo] = filecontent[x];
+				if (filecontent[x] == ' ') {
+					break;
+				}
+				x++;
+				tempo++;
+			}
+			sscanf_s(intnotparsed[manyints],"%d",integers[manyints]);
+			printf("\neverything went well\n");
+			printf("INT value = %d",integers[manyints]);
+
+			manyints += 1;
+		}
+		if (filecontent[x] == 'p' && filecontent[x + 1] == 'r' && filecontent[x + 2] == 'n' && filecontent[x + 3] == 't') {
 			
-			x += 5;
+			x += 4;
 			if (filecontent[x] == ' ' ) {
 				x++;
 			} if (filecontent[x] == '(') {
